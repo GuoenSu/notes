@@ -60,7 +60,7 @@ Two ways to create a String objects: String literals vs using "new" keyword. Sto
 
 Thanks to the immutability of *Strings* in Java, the JVM can optimize the amount of memory allocated for them by **storing only one copy of each literal \*String\* in the pool**. This process is called *interning*.
 
-When we create a *String* variable and assign a value to it, the JVM searches the pool for a *String* of equal value. **If found, the Java compiler will simply return a reference to its memory address, without allocating additional memory.**If not found, it'll be added to the pool (interned) and its reference will be returned.
+When we create a *String* variable and assign a value to it, the JVM searches the pool for a *String* of equal value. **If found, the Java compiler will simply return a reference to its memory address, without allocating additional memory.** If not found, it'll be added to the pool (interned) and its reference will be returned.
 
 When we create a *String* via the *new* operator, the Java compiler will create a new object and store it in the heap space reserved for the JVM.
 
@@ -82,7 +82,7 @@ public void stringBasic() {
 }
 ```
 
-![String1](/Users/Guoen/Documents/Java Tour/String1.jpeg)
+![String1](https://raw.githubusercontent.com/GuoenSu/HelloWorld/main/String1.jpeg)
 
 ```java
 public String intern()
