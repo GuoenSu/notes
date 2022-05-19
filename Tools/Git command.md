@@ -9,8 +9,8 @@
 
 3. git commit
 
-4. git pull fast-forward    
-    
+4. git pull fast-forward
+
     `git pull --ff-only origin`
 
 5. git push
