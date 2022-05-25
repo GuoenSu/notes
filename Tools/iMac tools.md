@@ -1,10 +1,14 @@
-1. vscode
+# Tools for new iMac
+
+## vscode
 
     be able to type 'code' in any folder to start editing files in that folder.
 
     `Cmd+Shift+P` and type **Shell Command: Install 'code' command in PATH**    
-2. command line developer tools
-3. homebrew, install at `/opt/homebrew/`
+
+## command line developer tools
+
+## homebrew, install at `/opt/homebrew/`
 
     origin PATH changed for `brew` command
     ```bash
@@ -29,9 +33,35 @@
 
     ```
 
-4. Java
+## Java install with Homebrew and softlink to /Library/Java/JavaVirtualMachines/openjdk.jdk
+
     ```bash
     $ ls /Library/Java/JavaVirtualMachines
+
+    $ brew install openjdk
     
+    For the system Java wrappers to find this JDK, symlink it with
+        sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+    
+    openjdk is keg-only, which means it was not symlinked into /opt/homebrew,
+    because macOS provides similar software and installing this software in
+    parallel can cause all kinds of trouble.
+
+    If you need to have openjdk first in your PATH, run:
+        echo 'export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"' >> ~/.zshrc
+
+    For compilers to find openjdk you may need to set:
+        export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
     ```
+
+After symlink command
+
+    ```bash
+    $ ls -il /Library/Java/JavaVirtualMachines
+        openjdk.jdk -> /opt/homebrew/opt/openjdk/libexec/openjdk.jdk
     
+    $ java -version
+        openjdk version "18.0.1" 2022-04-19
+        OpenJDK Runtime Environment Homebrew (build 18.0.1+0)
+        OpenJDK 64-Bit Server VM Homebrew (build 18.0.1+0, mixed mode, sharing)        
+    ```
