@@ -196,3 +196,48 @@ public synchronized StringBuffer append(String str) {
     return this;
 }
 ```
+
+## Use optionals to avoid NullPointException
+
+An optional is a container object, which may or may not have a value.
+To check if the value exist, use `isPresent()` method
+
+```java
+    /**
+     * If a value is present, returns the value, otherwise throws
+     * {@code NoSuchElementException}.
+     *
+     * @apiNote
+     * The preferred alternative to this method is {@link #orElseThrow()}.
+     *
+     * @return the non-{@code null} value described by this {@code Optional}
+     * @throws NoSuchElementException if no value is present
+     */
+    public T get() {
+        if (value == null) {
+            throw new NoSuchElementException("No value present");
+        }
+        return value;
+    }
+
+    /**
+     * If a value is present, returns {@code true}, otherwise {@code false}.
+     *
+     * @return {@code true} if a value is present, otherwise {@code false}
+     */
+    public boolean isPresent() {
+        return value != null;
+    }
+
+    /**
+     * If a value is present, returns the value, otherwise returns
+     * {@code other}.
+     *
+     * @param other the value to be returned, if no value is present.
+     *        May be {@code null}.
+     * @return the value, if present, otherwise {@code other}
+     */
+    public T orElse(T other) {
+        return value != null ? value : other;
+    }
+```
