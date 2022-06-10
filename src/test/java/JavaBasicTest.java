@@ -1,10 +1,19 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 public class JavaBasicTest {
@@ -36,7 +45,7 @@ public class JavaBasicTest {
 
     @Test
     public void lambdas() {
-        List<String> userList = List.of("Tom", "Sophia", "Ford", "Max");
+        var userList = List.of("Tom", "Sophia", "Ford", "Max");
 
         // consumer, have input no return
         Consumer<String> printConsumer = System.out::println;
@@ -50,4 +59,60 @@ public class JavaBasicTest {
 
         //
     }
+
+    @Test
+    public void palindromeTest() {
+        var testString = "civic";
+
+        assertFalse(palindrome3(testString));
+    }
+
+    public boolean palindrome(String original) {
+        var size = original.length();
+
+        for (int i = 0; i < size / 2; i++) {
+            Character charAtHead = original.charAt(i);
+            Character charAtTail = original.charAt(size - i - 1);
+            
+            if (!charAtHead.equals(charAtTail)) {
+                return false;
+            }
+            
+        }
+
+        return true;
+    }
+
+    public boolean palindrome2(String original) {
+
+        StringBuffer stringBuffer = new StringBuffer();
+
+        for (int i = original.length() - 1; i >= 0; i--) {
+            stringBuffer.append(original.charAt(i));
+        }
+
+
+        return original.equals(stringBuffer.toString());
+    }
+
+    public boolean palindrome3(String original) {
+        var size = original.length();
+        return IntStream.range(0, size)
+            .allMatch(i -> original.charAt(i) == original.charAt(size - i - 1));
+    }
+
+    @Test
+    public void vowelCounter() {
+        var vowels = "aeiouy";
+        var original = "Hello";
+
+        long vowelsCounts = original.chars()
+            .boxed()
+            .filter(i -> vowels.indexOf(i) > -1)
+            .count();
+
+        assertEquals(2, vowelsCounts);
+    }
+
+
 }

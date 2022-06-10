@@ -149,7 +149,7 @@ public boolean equals(Object anObject) {
 
 3. Interface **fields** are public, static and final by default, and only can have those. Abstract class could have any type variables.
 
-4. A class can **extends** only from **one** abstract class, but could **implements** **multiple** interface 
+4. A class can **extends** only from **one** abstract class, but could **implements** **multiple** interface.
 
    ```java
    public final class StringBuffer
@@ -157,7 +157,7 @@ public boolean equals(Object anObject) {
       implements java.io.Serializable, CharSequence
    ```
 
-5. Interface is **API and contract**, Abstract class is a **base class and templat**, has some concrate methods. 
+5. Interface is **API and contract**, Abstract class is a **base class and templat**, has some concrate methods.
 
 ## StringBuilder and StringBuffer
 
