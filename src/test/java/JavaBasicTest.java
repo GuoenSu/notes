@@ -1,18 +1,13 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.StringUtils;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
@@ -112,6 +107,20 @@ public class JavaBasicTest {
             .count();
 
         assertEquals(2, vowelsCounts);
+    }
+
+    @Test
+    public void integerTest() {
+        Integer integer1 = 100;
+        Integer integer2 = 100;
+        assertSame(integer1, integer2); // test true here, refer to the same object when value bewteen [-128,127]
+
+        Integer integer3 = 200;
+        Integer integer4 = 200;
+        assertSame(integer3, integer4); // test false here, refer to different object 
+
+        System.out.println(integer1 == integer2);   // true
+        System.out.println(integer3 == integer4);   // false
     }
 
 

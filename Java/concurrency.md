@@ -134,13 +134,18 @@ public class Lesson3 {
             return IntStream.rangeClosed(startInclusive, endInclusive)//
                     .map(i -> appleTrees[i].pickApples())//
                     .sum();
-
-
         }
     }
-
 }
 ```
+
+- When to use ForkJoinTask
+
+- Divide-and-conquer algorithms
+  - Binary search
+  - Merge sort
+  - Closet pair of points
+  - Karatsuba algorithm for integer multiplication
 
 Chapter 15. **Concepts behind CompletableFuture and reactive programming**
 
@@ -158,4 +163,81 @@ The Java ExecutorService provides an interface where you can submit tasks and ob
 
 This method creates an ExecutorService containing nThreads (often called *worker threads*) and stores them in a thread pool, from which unused threads are taken to run submitted tasks on a first-come, first-served basis. These threads are returned to the pool when their tasks terminate. One great outcome is that it’s cheap to submit thousands of tasks to a thread pool while keeping the number of tasks to a hardware-appropriate number. Several configurations are possible, including the size of the queue, rejection policy, and priority for different tasks.
 
-Note the wording: The programmer provides a `task` (a `Runnable` or a `Callable`), which is executed by a `thread`.
+Norte the wording: The programmer provides a `task` (a `Runnable` or a `Callable`), which is executed by a `thread`.
+
+**Runable and Callable**,
+
+```java
+    ExecutorService pool = Executors.newFixedThreadPool(2);
+    
+//  Callable<> task with return;
+//  package java.util.concurrent;
+    Callable<Pizza> task = () -> new Pizza();
+
+    Future<Pizza> pizzaPickupOrder = pool.submit(task);
+    Pizza pizza = pizzaPickupOrder.get();
+
+//  Runnable task no return;
+//  package java.lang;
+    Runnable sayHello = () -> System.out.print("Hello World");    
+    pool.execute(sayHello);
+```
+
+**Direct use Thread, not recommend**,
+
+```java
+    private static final Runnable helloTask = () -> System.out.printf("Hello from '%s'\n", Thread.currentThread().getName());
+
+    public static void demoThread() {
+        System.out.println("Demo Thread");
+        System.out.println("⚠️For demo purpoeses only, don't create/start Threads yourself - use ExecutorService instead!!");
+        
+        // submit 10 similar tasks
+        for (int i = 0; i < 10; i++) {
+            new Thread(helloTask).start();
+        }
+        // The tasks are executed from _ten_ _different_ threads
+        // 10 > 4 (4 is number of cores of my computer)
+        // threads are NOT re-used
+
+        System.out.println();
+    }
+```
+
+**Use Executor**,
+
+```java
+public static void demoThreadsCreatedByThreadPool() throws InterruptedException, ExecutionException {
+    System.out.println("Demo ThreadPool");
+    System.out.println("😄Use an ExecutorService to manage threads");
+
+    ExecutorService pool = Executors.newCachedThreadPool();
+    // submit 10 similar tasks and watch that they are executed from different
+    // threads
+    for (int i = 0; i < 10; i++) {
+        pool.submit(helloTask);
+    }
+
+    // Unlike thread.start(), threadPool.submit() returns a Future
+    Future<Integer> randomNumber = pool.submit(() -> new Random().nextInt());
+    System.out.println("Random number: " + randomNumber.get());
+
+    pool.shutdown();
+    System.out.println();
+}
+```
+
+**Different Executor pool type**,
+
+```java
+
+    ExecutorService pool = Executors.newCachedThreadPool()
+    ExecutorService pool = Executors.newFixedThreadPool(5)
+    ExecutorService pool = Executors.newSingleThreadExecutor()
+
+    ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4)
+    ScheduledFuture<?> waterReminder = scheduler.scheduleAtFixedRate(
+            () -> System.out.println("Hi there, it's time to drink a glass of water"), //
+            0, 1, TimeUnit.SECONDS);
+
+```
