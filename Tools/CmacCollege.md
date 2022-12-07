@@ -4,7 +4,7 @@
 
 > **cmaccollege.ca**
 
-Mobile 端样式，性能需要做改进，首次访问速度比较慢
+Mobile 端样式，性能需要做改进，首页需要充实内容。二级页面需要完整内容，二级页面的内容都是空白。多语言支持。
 
 **Mobile** <img src="https://raw.githubusercontent.com/GuoenSu/HelloWorld/main/Images/20221205204532.png" width="350">
 **Desktop** <img src="https://raw.githubusercontent.com/GuoenSu/HelloWorld/main/Images/20221205204623.png" width="350">
