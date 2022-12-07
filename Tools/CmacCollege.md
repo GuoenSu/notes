@@ -9,7 +9,7 @@ Mobile 端样式，性能需要做改进，首页需要充实内容。二级页�
 **Mobile** <img src="https://raw.githubusercontent.com/GuoenSu/HelloWorld/main/Images/20221205204532.png" width="350">
 **Desktop** <img src="https://raw.githubusercontent.com/GuoenSu/HelloWorld/main/Images/20221205204623.png" width="350">
 
-> **cot.ca**
+> **ocot.ca**
 
 如果没有CMS，可以考虑和 octech.ca 整合内容后停止更新，直接跳转到 octech.ca 网站，因为搜索CQE 排名靠前，需要外链或是引流到主网站
 
@@ -18,10 +18,12 @@ Mobile 端样式，性能需要做改进，首页需要充实内容。二级页�
 
 > **octech.ca**
 
-可以作为加拿大的主网站，设计，内容都可以，有部分需要调整的地方，后续新网站的开发完成后可以使用这个网址，所有的内容都可以导入到新版的网站
+可以作为加拿大的主网站，设计，内容都可以，Program 页面需要丰富，更加吸引用户，后期可加入在线购买.
+后续新网站的开发完成后可以使用这个网址，所有的内容都可以导入到新版的网站
 
 **Mobile** <img src="https://raw.githubusercontent.com/GuoenSu/HelloWorld/main/Images/20221205205704.png" width="350">
 **Desktop** <img src="https://raw.githubusercontent.com/GuoenSu/HelloWorld/main/Images/20221205205750.png" width="350">
+
 > **octec.ca**
 
 可以考虑作为中国的主网站，再根据中国区的发展规划，更新内容和SEO
