@@ -1,4 +1,4 @@
-# SEO,  Search Engine Optimization
+# SEO, Search Engine Optimization
 
 自然搜寻结果我们称为 organic Search，也就是透过 SEO 优化后所得到的排名。若需要付费，则称为 Paid Search，也就是透过投放 Google Ads 广告所得到的排名。
 
@@ -6,7 +6,7 @@
 
 > 优点
 
-- 快捷，方便， 几个小时就可以设置好关键词广告
+- 快捷，方便，几个小时就可以设置好关键词广告
 - 可以设置具体的地点，时间等
 - 可以设计更具体的销售页面，配合广告，增加转换率
 - 容易规模化，随着投入的增加，关键词的增加，规模容易扩大
@@ -128,4 +128,3 @@
     - Javascript採用異步加載
     - 使用CDN
     - 圖片壓縮
-5. 
